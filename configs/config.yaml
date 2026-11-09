@@ -1,0 +1,53 @@
+# Project Configuration for Tomato Leaf Disease Classification
+# All hyperparameters, paths, and training variables are defined here for reproducibility.
+
+project:
+  name: "crop-disease-detection"
+  task: "tomato-leaf-classification"
+  version: "0.1.0"
+
+# Reproducibility
+seed: 42
+
+# Hardware Acceleration
+device:
+  preferred: "mps"       # 'mps' for Apple Silicon M-series GPU, fallback to 'cpu'
+  benchmark: true
+
+# Dataset Paths & Settings
+dataset:
+  name: "PlantVillage"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  splits_dir: "data/splits"
+  target_crop: "tomato"  # Focusing on Tomato subset first
+  
+  # Image parameters
+  image_size: [224, 224] # [Height, Width] standard for vision models
+  num_channels: 3        # RGB images
+  
+  # Split proportions
+  train_split: 0.70
+  val_split: 0.15
+  test_split: 0.15
+
+# Training Hyperparameters
+training:
+  batch_size: 32         # Size suitable for M2 unified memory
+  num_workers: 2         # PyTorch DataLoader worker threads
+  epochs: 20
+  learning_rate: 0.001   # Initial learning rate for Adam optimizer
+  weight_decay: 0.0001   # L2 Regularization
+  early_stopping_patience: 5
+
+# Model Architecture
+model:
+  name: "baseline_cnn"   # Options in Phase 1: baseline_cnn; Phase 2: mobilenet_v2, resnet18
+  num_classes: 10        # Tomato subset has 10 classes (9 diseases + 1 healthy)
+  dropout_rate: 0.3
+
+# Output & Logging
+logging:
+  checkpoints_dir: "artifacts/checkpoints"
+  figures_dir: "artifacts/figures"
+  experiment_log: "reports/experiment_log.csv"
