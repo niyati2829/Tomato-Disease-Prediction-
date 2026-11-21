@@ -1,0 +1,282 @@
+{
+  "evaluation_phase": "Phase M2 \u2014 Improved U-Net Holdout Test Split Evaluation",
+  "test_dataset": "data/processed/tomato_lesions_plantseg/splits/test.csv",
+  "test_sample_count": 99,
+  "threshold": 0.5,
+  "models": {
+    "baseline": {
+      "checkpoint": "artifacts/checkpoints/segmentation_real/best_unet_real.pt",
+      "epoch": 7,
+      "val_dice": 0.5516931075396602,
+      "macro_metrics": {
+        "macro_dice": 0.4286,
+        "macro_iou": 0.3004,
+        "macro_precision": 0.3799,
+        "macro_recall": 0.7336,
+        "macro_pixel_accuracy": 0.8293
+      },
+      "micro_metrics": {
+        "micro_dice": 0.4816,
+        "micro_iou": 0.3172,
+        "micro_precision": 0.3675,
+        "micro_recall": 0.6987,
+        "micro_pixel_accuracy": 0.8292
+      },
+      "confusion_pixels": {
+        "total_tp": 514616,
+        "total_fp": 885886,
+        "total_fn": 221961,
+        "total_tn": 4865601
+      },
+      "cpu_latency": {
+        "device": "cpu",
+        "num_runs": 99,
+        "warmup_runs": 10,
+        "mean_latency_ms": 48.19,
+        "median_p50_ms": 47.09,
+        "p95_latency_ms": 52.03,
+        "std_latency_ms": 6.67,
+        "throughput_fps": 20.8
+      }
+    },
+    "improved": {
+      "checkpoint": "artifacts/checkpoints/segmentation_real/best_unet_improved.pt",
+      "epoch": 14,
+      "val_dice": 0.5759133355658748,
+      "macro_metrics": {
+        "macro_dice": 0.466,
+        "macro_iou": 0.3348,
+        "macro_precision": 0.439,
+        "macro_recall": 0.6985,
+        "macro_pixel_accuracy": 0.8578
+      },
+      "micro_metrics": {
+        "micro_dice": 0.507,
+        "micro_iou": 0.3395,
+        "micro_precision": 0.418,
+        "micro_recall": 0.644,
+        "micro_pixel_accuracy": 0.8578
+      },
+      "confusion_pixels": {
+        "total_tp": 474364,
+        "total_fp": 660468,
+        "total_fn": 262213,
+        "total_tn": 5091019
+      },
+      "cpu_latency": {
+        "device": "cpu",
+        "num_runs": 99,
+        "warmup_runs": 10,
+        "mean_latency_ms": 47.21,
+        "median_p50_ms": 46.97,
+        "p95_latency_ms": 48.6,
+        "std_latency_ms": 1.32,
+        "throughput_fps": 21.2
+      }
+    }
+  },
+  "absolute_changes": {
+    "macro_dice": 0.0374,
+    "macro_iou": 0.0344,
+    "macro_precision": 0.0591,
+    "macro_recall": -0.0351,
+    "macro_pixel_accuracy": 0.0285,
+    "micro_dice": 0.0254,
+    "micro_iou": 0.0223,
+    "fp_pixel_reduction_count": 225418,
+    "fp_pixel_reduction_percent": 25.45
+  },
+  "disease_level_comparison": {
+    "tomato bacterial leaf spot": {
+      "sample_count": 14,
+      "baseline": {
+        "dice": 0.5111,
+        "iou": 0.3686,
+        "precision": 0.5101,
+        "recall": 0.6542,
+        "pixel_accuracy": 0.8172,
+        "total_fp_pixels": 99375
+      },
+      "improved": {
+        "dice": 0.5237,
+        "iou": 0.3794,
+        "precision": 0.5993,
+        "recall": 0.6037,
+        "pixel_accuracy": 0.8481,
+        "total_fp_pixels": 55850
+      },
+      "absolute_changes": {
+        "delta_dice": 0.0125,
+        "delta_iou": 0.0108,
+        "delta_precision": 0.0892,
+        "delta_recall": -0.0505,
+        "delta_pixel_accuracy": 0.0309,
+        "fp_reduction_percent": 43.8
+      }
+    },
+    "tomato early blight": {
+      "sample_count": 23,
+      "baseline": {
+        "dice": 0.3632,
+        "iou": 0.2438,
+        "precision": 0.2637,
+        "recall": 0.833,
+        "pixel_accuracy": 0.8393,
+        "total_fp_pixels": 226401
+      },
+      "improved": {
+        "dice": 0.4368,
+        "iou": 0.3135,
+        "precision": 0.3546,
+        "recall": 0.8008,
+        "pixel_accuracy": 0.8761,
+        "total_fp_pixels": 164872
+      },
+      "absolute_changes": {
+        "delta_dice": 0.0736,
+        "delta_iou": 0.0697,
+        "delta_precision": 0.0908,
+        "delta_recall": -0.0323,
+        "delta_pixel_accuracy": 0.0368,
+        "fp_reduction_percent": 27.18
+      }
+    },
+    "tomato late blight": {
+      "sample_count": 18,
+      "baseline": {
+        "dice": 0.4311,
+        "iou": 0.3013,
+        "precision": 0.3723,
+        "recall": 0.7572,
+        "pixel_accuracy": 0.857,
+        "total_fp_pixels": 136102
+      },
+      "improved": {
+        "dice": 0.5248,
+        "iou": 0.3816,
+        "precision": 0.4778,
+        "recall": 0.7529,
+        "pixel_accuracy": 0.9094,
+        "total_fp_pixels": 77761
+      },
+      "absolute_changes": {
+        "delta_dice": 0.0937,
+        "delta_iou": 0.0804,
+        "delta_precision": 0.1055,
+        "delta_recall": -0.0043,
+        "delta_pixel_accuracy": 0.0524,
+        "fp_reduction_percent": 42.87
+      }
+    },
+    "tomato leaf mold": {
+      "sample_count": 15,
+      "baseline": {
+        "dice": 0.4246,
+        "iou": 0.2889,
+        "precision": 0.3485,
+        "recall": 0.7198,
+        "pixel_accuracy": 0.8419,
+        "total_fp_pixels": 130195
+      },
+      "improved": {
+        "dice": 0.4392,
+        "iou": 0.3065,
+        "precision": 0.388,
+        "recall": 0.6943,
+        "pixel_accuracy": 0.8556,
+        "total_fp_pixels": 113158
+      },
+      "absolute_changes": {
+        "delta_dice": 0.0145,
+        "delta_iou": 0.0176,
+        "delta_precision": 0.0394,
+        "delta_recall": -0.0255,
+        "delta_pixel_accuracy": 0.0137,
+        "fp_reduction_percent": 13.09
+      }
+    },
+    "tomato mosaic virus": {
+      "sample_count": 6,
+      "baseline": {
+        "dice": 0.2508,
+        "iou": 0.1578,
+        "precision": 0.3484,
+        "recall": 0.6468,
+        "pixel_accuracy": 0.7674,
+        "total_fp_pixels": 83364
+      },
+      "improved": {
+        "dice": 0.2682,
+        "iou": 0.1698,
+        "precision": 0.1984,
+        "recall": 0.627,
+        "pixel_accuracy": 0.797,
+        "total_fp_pixels": 70937
+      },
+      "absolute_changes": {
+        "delta_dice": 0.0174,
+        "delta_iou": 0.012,
+        "delta_precision": -0.1501,
+        "delta_recall": -0.0198,
+        "delta_pixel_accuracy": 0.0296,
+        "fp_reduction_percent": 14.91
+      }
+    },
+    "tomato septoria leaf spot": {
+      "sample_count": 14,
+      "baseline": {
+        "dice": 0.5178,
+        "iou": 0.3869,
+        "precision": 0.506,
+        "recall": 0.7247,
+        "pixel_accuracy": 0.8282,
+        "total_fp_pixels": 107942
+      },
+      "improved": {
+        "dice": 0.5022,
+        "iou": 0.3706,
+        "precision": 0.5626,
+        "recall": 0.659,
+        "pixel_accuracy": 0.834,
+        "total_fp_pixels": 87606
+      },
+      "absolute_changes": {
+        "delta_dice": -0.0156,
+        "delta_iou": -0.0162,
+        "delta_precision": 0.0566,
+        "delta_recall": -0.0658,
+        "delta_pixel_accuracy": 0.0058,
+        "fp_reduction_percent": 18.84
+      }
+    },
+    "tomato yellow leaf curl virus": {
+      "sample_count": 9,
+      "baseline": {
+        "dice": 0.4485,
+        "iou": 0.3172,
+        "precision": 0.3668,
+        "recall": 0.65,
+        "pixel_accuracy": 0.7887,
+        "total_fp_pixels": 102507
+      },
+      "improved": {
+        "dice": 0.4532,
+        "iou": 0.3277,
+        "precision": 0.3813,
+        "recall": 0.5925,
+        "pixel_accuracy": 0.8041,
+        "total_fp_pixels": 90284
+      },
+      "absolute_changes": {
+        "delta_dice": 0.0046,
+        "delta_iou": 0.0105,
+        "delta_precision": 0.0145,
+        "delta_recall": -0.0575,
+        "delta_pixel_accuracy": 0.0154,
+        "fp_reduction_percent": 11.92
+      }
+    }
+  },
+  "overlays_directory": "reports/plantseg_audit/test_prediction_overlays_comparison",
+  "overlays_generated": 7
+}

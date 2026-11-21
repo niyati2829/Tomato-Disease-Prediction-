@@ -1,0 +1,39 @@
+{
+  "video_input": "data/video/sample_field_surveillance.mp4",
+  "video_annotated": "artifacts/video/annotated_surveillance.mp4",
+  "metadata": {
+    "resolution": "640x480",
+    "original_fps": 30.0,
+    "sampled_fps": 15.0,
+    "total_frames_sampled": 150,
+    "duration_seconds": 10.0,
+    "file_size_mb": 3.4
+  },
+  "performance": {
+    "total_processing_time_s": 4.43,
+    "mean_latency_ms_per_frame": 26.67,
+    "surveillance_fps": 37.5
+  },
+  "pathology_findings": {
+    "dominant_disease": "Tomato Late Blight",
+    "disease_distribution": {
+      "Tomato Late Blight": 30,
+      "Tomato Bacterial Spot": 18,
+      "Tomato Septoria Leaf Spot": 16,
+      "Tomato Healthy": 14,
+      "Tomato Early Blight": 12,
+      "Tomato Leaf Mold": 12,
+      "Tomato Two-spotted Spider Mite": 12,
+      "Tomato Target Spot": 12,
+      "Tomato Yellow Leaf Curl Virus": 12,
+      "Tomato Mosaic Virus": 12
+    },
+    "mean_confidence": 0.9615
+  },
+  "entomology_findings": {
+    "total_tuta_absoluta_detections": 94,
+    "max_pests_in_single_frame": 5,
+    "frames_with_pests": 41
+  },
+  "segmentation_status": "Unavailable (Blocked by Dataset Availability)"
+}

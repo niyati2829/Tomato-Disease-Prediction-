@@ -1,0 +1,104 @@
+{
+  "dataset_name": "TomatoEbola Kasaisa Farm Pest Dataset (Shehu et al., 2025)",
+  "dataset_location": "/Users/niyatijha/Desktop/crop-disease-detection/data/pest_detection/real_tuta_absoluta",
+  "license": "CC BY 4.0",
+  "split_statistics": {
+    "train": {
+      "image_count": 98,
+      "label_count": 98,
+      "orphaned_images": [],
+      "orphaned_labels": [],
+      "total_boxes": 262,
+      "class_distribution": {
+        "0": 116,
+        "1": 146
+      },
+      "class_named_distribution": {
+        "healthy_foliar_patch": 116,
+        "tuta_absoluta_damage": 146
+      },
+      "degenerate_boxes": 0,
+      "overflow_boxes": 0
+    },
+    "valid": {
+      "image_count": 12,
+      "label_count": 12,
+      "orphaned_images": [],
+      "orphaned_labels": [],
+      "total_boxes": 28,
+      "class_distribution": {
+        "0": 10,
+        "1": 18
+      },
+      "class_named_distribution": {
+        "healthy_foliar_patch": 10,
+        "tuta_absoluta_damage": 18
+      },
+      "degenerate_boxes": 0,
+      "overflow_boxes": 0
+    },
+    "test": {
+      "image_count": 12,
+      "label_count": 12,
+      "orphaned_images": [],
+      "orphaned_labels": [],
+      "total_boxes": 29,
+      "class_distribution": {
+        "0": 12,
+        "1": 17
+      },
+      "class_named_distribution": {
+        "healthy_foliar_patch": 12,
+        "tuta_absoluta_damage": 17
+      },
+      "degenerate_boxes": 0,
+      "overflow_boxes": 0
+    }
+  },
+  "total_images": 122,
+  "total_boxes": 319,
+  "box_statistics": {
+    "total_boxes": 319,
+    "class_0_healthy_count": 138,
+    "class_1_tuta_count": 181,
+    "mean_width": 0.3566,
+    "median_width": 0.3281,
+    "mean_height": 0.3265,
+    "median_height": 0.275,
+    "mean_area_ratio": 0.1427,
+    "median_area_ratio": 0.0902,
+    "min_area_ratio": 0.002065,
+    "max_area_ratio": 0.6876,
+    "mean_aspect_ratio": 1.3421,
+    "median_aspect_ratio": 1.1341
+  },
+  "integrity": {
+    "intra_split_duplicates_count": 0,
+    "cross_split_leakage_count": 0,
+    "duplicate_records": [],
+    "cross_split_leakage": [],
+    "total_degenerate_boxes": 0,
+    "total_overflow_boxes": 0
+  },
+  "eden_library_investigation": {
+    "local_files_present": false,
+    "local_search_paths": [
+      "data/",
+      "docs/",
+      "reports/",
+      "src/"
+    ],
+    "finding": "No EDEN Library dataset files exist locally in the project repository or its subdirectories.",
+    "online_status": "EDEN Library (edenlibrary.ai) hosts smart farming datasets, but no pre-downloaded package is present in this workspace."
+  },
+  "other_farm_subsets_status": {
+    "dikumari_farm": "Restricted on Zenodo (Record 13324917). GitHub only hosts raw unannotated JPGs.",
+    "kukareta_farm": "Restricted on Zenodo (Record 13324917). GitHub only hosts raw unannotated JPGs."
+  },
+  "yolov8_compatibility": {
+    "format": "YOLO standard (class_id cx cy w h normalized)",
+    "data_yaml_exists": true,
+    "structure": "train/images, train/labels, valid/images, valid/labels, test/images, test/labels",
+    "ready_for_yolov8": true
+  }
+}

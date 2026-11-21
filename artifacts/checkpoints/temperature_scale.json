@@ -1,0 +1,13 @@
+{
+  "optimal_temperature": 1.3020572662353516,
+  "calibration_dataset": "data/splits/val.csv (N=1816)",
+  "evaluation_dataset": "data/splits/test.csv (N=2724)",
+  "method": "Temperature Scaling (L-BFGS optimization on NLL with strong Wolfe line search)",
+  "test_ece_uncalibrated": 0.00492578482312776,
+  "test_ece_calibrated": 0.00364128274845837,
+  "test_mce_uncalibrated": 0.5739385485649109,
+  "test_mce_calibrated": 0.5993500649929047,
+  "test_brier_uncalibrated": 0.012665929272770882,
+  "test_brier_calibrated": 0.012682385742664337,
+  "test_accuracy": 0.9922907488986784
+}

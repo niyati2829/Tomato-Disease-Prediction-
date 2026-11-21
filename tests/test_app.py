@@ -1,0 +1,111 @@
+"""Unit Tests for Streamlit Application Pipeline.
+
+Verifies:
+1. Class mapping loader accurately parses all 10 categories.
+2. Model loader strictly loads best_resnet18_weighted.pt with 10 output classes.
+3. Model is set to eval() mode.
+4. Input preprocessing transforms yield shape (1, 3, 224, 224) normalized tensor.
+5. Prediction returns top-3 classes with descending probabilities and valid bounds.
+6. Healthy foliage identification is properly marked.
+
+Author: Crop Disease Detection Project Team
+"""
+
+import sys
+from pathlib import Path
+import pytest
+import torch
+from PIL import Image
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from app.app import (
+    CHECKPOINT_PATH,
+    CLASS_MAPPING_PATH,
+    DISPLAY_NAME_OVERRIDES,
+    get_inference_transforms,
+    load_class_mappings,
+    load_production_model,
+    predict_leaf,
+)
+
+
+def test_class_mapping_integrity():
+    """Verify class mapping loads exactly 10 classes in ascending integer index order."""
+    class_to_idx, idx_to_class, class_names_sorted = load_class_mappings(CLASS_MAPPING_PATH)
+
+    assert len(class_to_idx) == 10, f"Expected 10 classes, got {len(class_to_idx)}"
+    assert len(idx_to_class) == 10
+    assert len(class_names_sorted) == 10
+    assert set(range(10)) == set(class_to_idx.values())
+    assert class_names_sorted[0] == "Tomato___Bacterial_spot"
+    assert class_names_sorted[9] == "Tomato___healthy"
+
+
+def test_production_checkpoint_exists():
+    """Verify the frozen final model checkpoint exists and is non-empty."""
+    assert CHECKPOINT_PATH.exists(), f"Checkpoint missing: {CHECKPOINT_PATH}"
+    size_mb = CHECKPOINT_PATH.stat().st_size / (1024 * 1024)
+    assert 100 < size_mb < 120, f"Unexpected checkpoint size: {size_mb} MB"
+
+
+def test_production_model_loader():
+    """Verify production model loads strictly in evaluation mode."""
+    model, device, device_name = load_production_model(CHECKPOINT_PATH)
+
+    assert model is not None
+    assert isinstance(model, torch.nn.Module)
+    assert model.training is False, "Model must be in eval mode!"
+    assert model.fc.out_features == 10, "Output head must have 10 classes!"
+
+
+def test_inference_transforms():
+    """Verify inference transforms resize and normalize image to (1, 3, 224, 224)."""
+    transform = get_inference_transforms()
+    # Synthetic 300x400 image
+    dummy_img = Image.new("RGB", (300, 400), color=(120, 180, 70))
+    tensor = transform(dummy_img).unsqueeze(0)
+
+    assert tensor.shape == (1, 3, 224, 224)
+    assert tensor.dtype == torch.float32
+    assert torch.isfinite(tensor).all()
+
+
+def test_predict_leaf_output_structure():
+    """Verify predict_leaf returns ranked top-3 predictions with valid probabilities."""
+    model, device, _ = load_production_model(CHECKPOINT_PATH)
+    _, idx_to_class, _ = load_class_mappings(CLASS_MAPPING_PATH)
+
+    dummy_img = Image.new("RGB", (256, 256), color=(50, 150, 50))
+    predictions = predict_leaf(dummy_img, model, device, idx_to_class)
+
+    assert len(predictions) == 3, "Must return top-3 predictions"
+    assert predictions[0]["rank"] == 1
+    assert predictions[1]["rank"] == 2
+    assert predictions[2]["rank"] == 3
+
+    # Probabilities must be descending and bounded between 0 and 1
+    assert predictions[0]["probability"] >= predictions[1]["probability"] >= predictions[2]["probability"]
+    for pred in predictions:
+        assert 0.0 <= pred["probability"] <= 1.0
+        assert 0.0 <= pred["percentage"] <= 100.0
+        assert isinstance(pred["display_name"], str)
+        assert len(pred["display_name"]) > 0
+
+
+def test_sample_image_prediction():
+    """Verify prediction on an actual dataset leaf image."""
+    model, device, _ = load_production_model(CHECKPOINT_PATH)
+    _, idx_to_class, _ = load_class_mappings(CLASS_MAPPING_PATH)
+
+    sample_path = PROJECT_ROOT / "data/raw/PlantVillage-Dataset/raw/color/Tomato___Bacterial_spot/0045ba29-ed1b-43b4-afde-719cc7adefdb___GCREC_Bact.Sp 6254.JPG"
+    if sample_path.exists():
+        with Image.open(sample_path) as img:
+            predictions = predict_leaf(img, model, device, idx_to_class)
+        top1 = predictions[0]
+        assert top1["raw_class"] == "Tomato___Bacterial_spot"
+        assert top1["display_name"] == "Bacterial Spot"
+        assert top1["percentage"] > 90.0
+

@@ -17,6 +17,9 @@ import random
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+# Ensure writable matplotlib cache directory in sandboxed/restricted environments
+os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -194,7 +197,7 @@ def plot_class_distribution(df: pd.DataFrame, output_path: Path) -> None:
         for name in sorted_df["class_name"]
     ]
 
-    fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
+    fig, ax = plt.subplots(figsize=(11, 6.5), dpi=150)
     
     # Modern color palette (teal gradient)
     colors = plt.cm.viridis(np.linspace(0.3, 0.85, len(sorted_df)))
@@ -227,7 +230,7 @@ def plot_class_distribution(df: pd.DataFrame, output_path: Path) -> None:
     ax.spines["right"].set_visible(False)
 
     plt.tight_layout()
-    fig.savefig(output_path)
+    fig.savefig(output_path, bbox_inches="tight")
     plt.close(fig)
     print(f" Saved class distribution plot to: {output_path}")
 
@@ -246,7 +249,7 @@ def plot_sample_grid(
     random.seed(seed)
 
     class_names = sorted(list(tomato_dirs.keys()))
-    fig, axes = plt.subplots(2, 5, figsize=(16, 7), dpi=150)
+    fig, axes = plt.subplots(2, 5, figsize=(16, 7.5), dpi=150)
     axes = axes.flatten()
 
     for idx, class_name in enumerate(class_names):
@@ -275,10 +278,10 @@ def plot_sample_grid(
         ax.imshow(img_rgb)
         ax.set_title(
             f"{clean_title}\n({len(image_files)} imgs)",
-            fontsize=9,
+            fontsize=9.5,
             fontweight="bold",
             color=title_color,
-            pad=6,
+            pad=8,
         )
         ax.axis("off")
 
@@ -286,10 +289,10 @@ def plot_sample_grid(
         "PlantVillage: Visual Samples Across All 10 Tomato Leaf Classes",
         fontsize=14,
         fontweight="bold",
-        y=0.99,
+        y=0.98,
     )
-    plt.tight_layout()
-    fig.savefig(output_path)
+    plt.subplots_adjust(top=0.90, bottom=0.04, hspace=0.35, wspace=0.15)
+    fig.savefig(output_path, bbox_inches="tight")
     plt.close(fig)
     print(f" Saved sample grid plot to: {output_path}")
 

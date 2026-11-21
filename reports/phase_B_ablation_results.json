@@ -1,0 +1,79 @@
+[
+  {
+    "experiment": "Exp-1: Baseline (Unregularized)",
+    "description": "Standard 2-layer MLP without regularization or augmentation",
+    "train_loss": 0.0292,
+    "val_loss": 0.498,
+    "train_accuracy_pct": 100.0,
+    "val_accuracy_pct": 80.0,
+    "generalization_gap_pct": 20.0,
+    "w_norm_l2": 9.372,
+    "sparsity_pct": 0.23
+  },
+  {
+    "experiment": "Exp-2: L1 Regularization",
+    "description": "Lasso penalty driving uninformative weights to exact zero",
+    "train_loss": 1.9105,
+    "val_loss": 2.2285,
+    "train_accuracy_pct": 100.0,
+    "val_accuracy_pct": 79.29,
+    "generalization_gap_pct": 20.71,
+    "w_norm_l2": 5.674,
+    "sparsity_pct": 24.06
+  },
+  {
+    "experiment": "Exp-3: L2 Regularization",
+    "description": "Weight decay shrinking large parameter magnitudes",
+    "train_loss": 0.6379,
+    "val_loss": 1.0457,
+    "train_accuracy_pct": 100.0,
+    "val_accuracy_pct": 79.29,
+    "generalization_gap_pct": 20.71,
+    "w_norm_l2": 7.66,
+    "sparsity_pct": 0.16
+  },
+  {
+    "experiment": "Exp-4: Inverted Dropout (p=0.35)",
+    "description": "Random unit deactivation to prevent co-adaptation",
+    "train_loss": 0.1557,
+    "val_loss": 0.4862,
+    "train_accuracy_pct": 93.33,
+    "val_accuracy_pct": 77.14,
+    "generalization_gap_pct": 16.19,
+    "w_norm_l2": 9.179,
+    "sparsity_pct": 0.39
+  },
+  {
+    "experiment": "Exp-5: Training Data Augmentation",
+    "description": "Input feature jitter applied to training partition only",
+    "train_loss": 0.0304,
+    "val_loss": 0.4598,
+    "train_accuracy_pct": 100.0,
+    "val_accuracy_pct": 80.0,
+    "generalization_gap_pct": 20.0,
+    "w_norm_l2": 9.384,
+    "sparsity_pct": 0.16
+  },
+  {
+    "experiment": "Exp-6: Xavier Init (on ReLU)",
+    "description": "Glorot initialization without ReLU factor of 2",
+    "train_loss": 0.0335,
+    "val_loss": 0.4358,
+    "train_accuracy_pct": 100.0,
+    "val_accuracy_pct": 80.0,
+    "generalization_gap_pct": 20.0,
+    "w_norm_l2": 6.625,
+    "sparsity_pct": 0.47
+  },
+  {
+    "experiment": "Exp-7: Random Normal Init",
+    "description": "Standard normal initialization N(0, 1) prone to saturation",
+    "train_loss": 0.0033,
+    "val_loss": 2.2164,
+    "train_accuracy_pct": 100.0,
+    "val_accuracy_pct": 69.29,
+    "generalization_gap_pct": 30.71,
+    "w_norm_l2": 28.151,
+    "sparsity_pct": 0.08
+  }
+]

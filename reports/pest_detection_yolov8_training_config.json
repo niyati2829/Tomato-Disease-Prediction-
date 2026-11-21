@@ -1,0 +1,24 @@
+{
+  "model_architecture": "YOLOv8n-seg",
+  "task": "segment",
+  "pretrained_weights": "/Users/niyatijha/Desktop/crop-disease-detection/artifacts/checkpoints/pest_detection_yolov8/yolov8n-seg.pt",
+  "data_yaml": "/Users/niyatijha/Desktop/crop-disease-detection/data/pest_detection/tuta_absoluta_research_v4/data.yaml",
+  "dataset_name": "TutaAbsolutaResearch v4 (Roboflow Universe)",
+  "classes": {
+    "0": "Healthy",
+    "1": "Tuta absoluta"
+  },
+  "epochs": 50,
+  "imgsz": 640,
+  "batch_size": 8,
+  "seed": 42,
+  "patience": 10,
+  "device": "mps",
+  "optimizer": "auto",
+  "lr0": 0.01,
+  "lrf": 0.01,
+  "weight_decay": 0.0005,
+  "box_loss_gain": 7.5,
+  "cls_loss_gain": 0.5,
+  "dfl_loss_gain": 1.5
+}

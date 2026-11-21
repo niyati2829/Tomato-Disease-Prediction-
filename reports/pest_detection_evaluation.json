@@ -1,0 +1,25 @@
+{
+  "checkpoint_evaluated": "artifacts/checkpoints/detection/best_pest_detector.pt",
+  "test_images": 10,
+  "device": "cpu",
+  "average_inference_latency_ms": 7.520208200730849,
+  "mAP_0.5": 0.0,
+  "mAP_0.5:0.95": 0.0,
+  "per_class_metrics": {
+    "Tomato Whitefly": {
+      "AP_0.5": 0.0,
+      "Precision_0.5": 0.0,
+      "Recall_0.5": 0.0
+    },
+    "Aphid Cluster": {
+      "AP_0.5": 0.0,
+      "Precision_0.5": 0.0,
+      "Recall_0.5": 0.0
+    },
+    "Spider Mite": {
+      "AP_0.5": 0.0,
+      "Precision_0.5": 0.0,
+      "Recall_0.5": 0.0
+    }
+  }
+}

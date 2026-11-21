@@ -1,1 +1,6 @@
 experiment_name,model,dataset_subset,seed,learning_rate,batch_size,epochs,train_loss,val_loss,accuracy,precision,recall,f1_score,notes
+exp01_baseline_cnn,BaselineCNN,tomato_10_class,42,0.001,32,10,0.1776,0.1134,96.18,0.9538,0.9495,0.9511,"10 epochs on Apple Silicon MPS; val_acc=96.18%, best_val_loss=0.1134"
+exp02_resnet18_transfer,ResNet18,tomato_10_class,42,"fc:0.001,layer4:0.0001",32,10,0.0425,0.0572,98.24,0.9799,0.9753,0.9771,"Two-phase transfer learning on MPS; Phase A (5 ep) + Phase B (5 ep); val_acc=98.24%, best_val_loss=0.0572 at Epoch 9"
+exp03_resnet18_weighted,ResNet18,tomato_10_class,42,"fc:0.0002,layer4:0.00005",32,5,0.0207,0.0323,99.12,0.9889,0.9906,0.9897,"Stage 5 Exp A: Sqrt inverse-freq class weights; Early Blight recall=99.33%, Macro F1=0.9897 at Epoch 3"
+exp04_resnet18_aug_weighted,ResNet18,tomato_10_class,42,"fc:0.0002,layer4:0.00005",32,5,0.0242,0.0494,98.53,0.9852,0.9872,0.9861,"Stage 5 Exp B: Sqrt weights + ColorJitter + RandomResizedCrop; Early Blight recall=96.67%, Macro F1=0.9861 at Epoch 4"
+exp05_final_test_exp_a,ResNet18,tomato_10_class,42,"fc:0.0002,layer4:0.00005",32,5,N/A,N/A,99.23,0.9873,0.9899,0.9885,"Stage 6 Final Evaluation on Holdout Test Set (N=2724); Selected Model: Exp A; Test Acc=99.23%, Macro F1=0.9885, Early Blight recall=96.67%"

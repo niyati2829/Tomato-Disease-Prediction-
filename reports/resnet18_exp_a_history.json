@@ -1,0 +1,65 @@
+{
+  "epoch": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "phase": [
+    "B_weighted_continuation",
+    "B_weighted_continuation",
+    "B_weighted_continuation",
+    "B_weighted_continuation",
+    "B_weighted_continuation"
+  ],
+  "train_loss": [
+    0.0311,
+    0.0256,
+    0.0207,
+    0.0164,
+    0.02
+  ],
+  "val_loss": [
+    0.0382,
+    0.0489,
+    0.0323,
+    0.0708,
+    0.0451
+  ],
+  "train_acc": [
+    99.02,
+    99.24,
+    99.41,
+    99.51,
+    99.4
+  ],
+  "val_acc": [
+    98.57,
+    98.75,
+    99.12,
+    97.87,
+    99.05
+  ],
+  "macro_f1": [
+    0.9827,
+    0.9849,
+    0.9897,
+    0.9707,
+    0.9889
+  ],
+  "early_blight_recall": [
+    0.94,
+    0.9667,
+    0.9933,
+    0.9467,
+    0.9733
+  ],
+  "epoch_duration": [
+    89.64,
+    87.93,
+    89.96,
+    89.96,
+    95.17
+  ]
+}

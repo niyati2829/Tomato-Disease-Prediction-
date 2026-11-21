@@ -1,0 +1,98 @@
+{
+  "dataset_name": "TutaAbsolutaResearch v4 (Roboflow Universe)",
+  "dataset_location": "/Users/niyatijha/Desktop/crop-disease-detection/data/pest_detection/tuta_absoluta_research_v4",
+  "license": "CC BY 4.0",
+  "total_images": 937,
+  "total_polygons": 1748,
+  "classes": {
+    "0": "Healthy",
+    "1": "Tuta absoluta"
+  },
+  "split_statistics": {
+    "train": {
+      "image_count": 657,
+      "label_count": 657,
+      "orphaned_images": [],
+      "orphaned_labels": [],
+      "empty_label_files": 0,
+      "total_polygons": 1199,
+      "class_distribution": {
+        "1": 886,
+        "0": 313
+      },
+      "class_named_distribution": {
+        "Tuta absoluta": 886,
+        "Healthy": 313
+      },
+      "overflow_polygons": 131
+    },
+    "valid": {
+      "image_count": 188,
+      "label_count": 188,
+      "orphaned_images": [],
+      "orphaned_labels": [],
+      "empty_label_files": 0,
+      "total_polygons": 398,
+      "class_distribution": {
+        "1": 264,
+        "0": 134
+      },
+      "class_named_distribution": {
+        "Tuta absoluta": 264,
+        "Healthy": 134
+      },
+      "overflow_polygons": 42
+    },
+    "test": {
+      "image_count": 92,
+      "label_count": 92,
+      "orphaned_images": [],
+      "orphaned_labels": [],
+      "empty_label_files": 0,
+      "total_polygons": 151,
+      "class_distribution": {
+        "1": 124,
+        "0": 27
+      },
+      "class_named_distribution": {
+        "Tuta absoluta": 124,
+        "Healthy": 27
+      },
+      "overflow_polygons": 11
+    }
+  },
+  "polygon_statistics": {
+    "total_polygons": 1748,
+    "points_per_polygon": {
+      "min": 4,
+      "max": 4,
+      "mode": 4
+    },
+    "class_0_healthy_count": 474,
+    "class_1_tuta_count": 1274,
+    "mean_width": 0.2564,
+    "median_width": 0.198,
+    "mean_height": 0.2688,
+    "median_height": 0.201,
+    "mean_area_ratio": 0.1118,
+    "median_area_ratio": 0.0397,
+    "overflow_count": 184
+  },
+  "integrity": {
+    "duplicate_images_count": 0,
+    "cross_split_leakage_count": 0,
+    "duplicate_records": [],
+    "cross_split_leakage": [],
+    "overflow_polygons_count": 184
+  },
+  "suitability_assessment": {
+    "annotation_type": "4-point oriented polygons (YOLOv8-OBB / instance segmentation)",
+    "classes_meaning": {
+      "0": "Healthy leaf tissue / foliage reference",
+      "1": "Tuta absoluta feeding damage (larval leaf mines / galleries)"
+    },
+    "semantic_match_with_kasaisa": true,
+    "format_compatibility": "Compatible with Ultralytics YOLOv8 (obb and segment tasks)",
+    "ready_for_training": true
+  }
+}

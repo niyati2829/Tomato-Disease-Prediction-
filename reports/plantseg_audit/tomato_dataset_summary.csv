@@ -1,0 +1,8 @@
+Disease Category,Class Index,Total Images,Total Masks,Valid Pairs,Invalid Pairs,Dimension Mismatches (Transposed),Empty Masks,Common Resolutions,Mean Mask Ratio,Training Count,Validation Count,Test Count
+tomato bacterial leaf spot,96,90,90,90,0,1,0,"640x480, 1024x768, 660x495",0.2211,64,9,17
+tomato early blight,97,153,153,153,0,3,0,"996x1328, 800x533, 300x200",0.1058,103,16,34
+tomato late blight,98,117,117,117,0,0,0,"1200x1600, 640x480, 1000x667",0.1515,84,14,19
+tomato leaf mold,99,102,102,102,0,0,0,"660x521, 690x518, 828x500",0.1601,71,13,18
+tomato mosaic virus,100,43,43,43,0,0,0,"600x380, 720x1280, 384x288",0.1631,29,5,9
+tomato septoria leaf spot,101,99,99,99,0,1,0,"500x310, 600x400, 800x533",0.2641,66,13,20
+tomato yellow leaf curl virus,102,63,63,63,0,0,0,"690x518, 1024x768, 640x480",0.2105,43,4,16

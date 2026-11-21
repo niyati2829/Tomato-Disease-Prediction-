@@ -15,6 +15,7 @@ env/
 
 # macOS system files
 .DS_Store
+**/.DS_Store
 .AppleDouble
 .LSOverride
 ._*
@@ -28,19 +29,16 @@ env/
 .coverage
 htmlcov/
 
-# Datasets (never commit raw images or generated split files)
+# Datasets (keep split indices, documentation, and video samples; exclude massive raw image folders)
 data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
-data/splits/*
-!data/splits/.gitkeep
 
-# Artifacts, weights, and large figures
-artifacts/checkpoints/*
-!artifacts/checkpoints/.gitkeep
-artifacts/figures/*
-!artifacts/figures/.gitkeep
+# Model checkpoints and visual artifacts are tracked via Git / Git LFS
+!artifacts/checkpoints/**
+!artifacts/figures/**
+!artifacts/video/**
 
 # IDEs
 .idea/

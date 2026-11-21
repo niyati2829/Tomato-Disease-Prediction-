@@ -1,0 +1,9 @@
+path: /Users/niyatijha/Desktop/crop-disease-detection/data/pest_detection/tuta_absoluta_research_v4
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 2
+names:
+  0: Healthy
+  1: Tuta absoluta

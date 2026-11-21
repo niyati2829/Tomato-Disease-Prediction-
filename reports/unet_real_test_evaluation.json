@@ -1,0 +1,100 @@
+{
+  "evaluation_phase": "Phase L \u2014 Holdout Test Evaluation",
+  "checkpoint_evaluated": "artifacts/checkpoints/segmentation_real/best_unet_real.pt",
+  "checkpoint_train_epoch": 7,
+  "checkpoint_val_dice": 0.5517,
+  "test_dataset": "PlantSeg v7 Cleaned Tomato Subset (data/processed/tomato_lesions_plantseg/)",
+  "test_sample_count": 99,
+  "fixed_classification_threshold": 0.5,
+  "resolution": [
+    256,
+    256
+  ],
+  "device": "cpu",
+  "macro_metrics": {
+    "mean_dice_score": 0.4286,
+    "mean_iou": 0.3004,
+    "mean_precision": 0.3799,
+    "mean_recall": 0.7336,
+    "mean_pixel_accuracy": 0.8293
+  },
+  "micro_metrics": {
+    "micro_dice_score": 0.4816,
+    "micro_iou": 0.3172,
+    "micro_precision": 0.3675,
+    "micro_recall": 0.6987,
+    "micro_pixel_accuracy": 0.8292
+  },
+  "confusion_pixels": {
+    "total_true_positives": 514616,
+    "total_false_positives": 885886,
+    "total_false_negatives": 221961,
+    "total_true_negatives": 4865601
+  },
+  "per_disease_breakdown": {
+    "tomato bacterial leaf spot": {
+      "test_sample_count": 14,
+      "mean_dice": 0.5111,
+      "mean_iou": 0.3686,
+      "mean_precision": 0.5101,
+      "mean_recall": 0.6542,
+      "mean_pixel_accuracy": 0.8172
+    },
+    "tomato early blight": {
+      "test_sample_count": 23,
+      "mean_dice": 0.3632,
+      "mean_iou": 0.2438,
+      "mean_precision": 0.2637,
+      "mean_recall": 0.833,
+      "mean_pixel_accuracy": 0.8393
+    },
+    "tomato late blight": {
+      "test_sample_count": 18,
+      "mean_dice": 0.4311,
+      "mean_iou": 0.3013,
+      "mean_precision": 0.3723,
+      "mean_recall": 0.7572,
+      "mean_pixel_accuracy": 0.857
+    },
+    "tomato leaf mold": {
+      "test_sample_count": 15,
+      "mean_dice": 0.4246,
+      "mean_iou": 0.2889,
+      "mean_precision": 0.3485,
+      "mean_recall": 0.7198,
+      "mean_pixel_accuracy": 0.8419
+    },
+    "tomato mosaic virus": {
+      "test_sample_count": 6,
+      "mean_dice": 0.2508,
+      "mean_iou": 0.1578,
+      "mean_precision": 0.3484,
+      "mean_recall": 0.6468,
+      "mean_pixel_accuracy": 0.7674
+    },
+    "tomato septoria leaf spot": {
+      "test_sample_count": 14,
+      "mean_dice": 0.5178,
+      "mean_iou": 0.3869,
+      "mean_precision": 0.506,
+      "mean_recall": 0.7247,
+      "mean_pixel_accuracy": 0.8282
+    },
+    "tomato yellow leaf curl virus": {
+      "test_sample_count": 9,
+      "mean_dice": 0.4485,
+      "mean_iou": 0.3172,
+      "mean_precision": 0.3668,
+      "mean_recall": 0.65,
+      "mean_pixel_accuracy": 0.7887
+    }
+  },
+  "latency_benchmarks": {
+    "device": "cpu",
+    "mean_latency_ms": 51.19,
+    "p95_latency_ms": 68.18,
+    "throughput_fps": 19.5
+  },
+  "overlays_generated_count": 7,
+  "overlays_directory": "reports/plantseg_audit/test_prediction_overlays"
+}

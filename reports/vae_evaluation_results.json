@@ -1,0 +1,9 @@
+{
+  "checkpoint": "artifacts/checkpoints/generative/best_vae.pt",
+  "val_samples": 160,
+  "latent_dim": 16,
+  "mean_pixel_mse": 0.00735830443300074,
+  "mean_psnr_db": 22.16680913845268,
+  "mean_kl_divergence": 19.369765853881837,
+  "per_image_inference_latency_ms": 1.3325997499805453
+}

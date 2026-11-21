@@ -34,8 +34,8 @@ dataset:
 # Training Hyperparameters
 training:
   batch_size: 32         # Size suitable for M2 unified memory
-  num_workers: 2         # PyTorch DataLoader worker threads
-  epochs: 20
+  num_workers: 0         # PyTorch DataLoader worker threads (0 for reliable M2 execution)
+  epochs: 10             # Baseline CNN initial epochs
   learning_rate: 0.001   # Initial learning rate for Adam optimizer
   weight_decay: 0.0001   # L2 Regularization
   early_stopping_patience: 5
@@ -51,3 +51,18 @@ logging:
   checkpoints_dir: "artifacts/checkpoints"
   figures_dir: "artifacts/figures"
   experiment_log: "reports/experiment_log.csv"
+
+# Transfer Learning Configuration (Stage 4 - ResNet18)
+resnet18:
+  name: "resnet18"
+  num_classes: 10
+  batch_size: 32
+  num_workers: 0
+  feature_extraction_epochs: 5
+  finetuning_epochs: 5
+  lr_fc: 0.001
+  lr_layer4: 0.0001
+  weight_decay: 0.0001
+  checkpoint: "artifacts/checkpoints/best_resnet18.pt"
+  history: "reports/resnet18_history.json"
+

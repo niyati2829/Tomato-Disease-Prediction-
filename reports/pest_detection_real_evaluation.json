@@ -1,0 +1,29 @@
+{
+  "dataset": "Shehu et al. (2025) Real Tuta absoluta Pest Dataset",
+  "split": "test",
+  "n_test_images": 12,
+  "classes": {
+    "0": "healthy",
+    "1": "tuta_absoluta_damage"
+  },
+  "mAP_0.5": 0.30438842203548083,
+  "mAP_0.5:0.95": 0.08785830999066292,
+  "per_class_AP_0.5": {
+    "healthy": 0.5222222222222221,
+    "tuta_absoluta_damage": 0.0865546218487395
+  },
+  "per_class_Precision_0.5": {
+    "healthy": 0.18604651162790697,
+    "tuta_absoluta_damage": 0.0784313725490196
+  },
+  "per_class_Recall_0.5": {
+    "healthy": 0.6666666666666666,
+    "tuta_absoluta_damage": 0.23529411764705882
+  },
+  "latency_ms": {
+    "mean": 10.272097167216998,
+    "std": 1.458582700765453,
+    "fps": 97.35110403661888,
+    "device": "cpu"
+  }
+}

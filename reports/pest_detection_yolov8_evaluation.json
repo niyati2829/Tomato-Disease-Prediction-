@@ -1,0 +1,77 @@
+{
+  "evaluation_phase": "Phase M3-B \u2014 YOLOv8n-Seg Holdout Test Evaluation",
+  "model_architecture": "YOLOv8n-seg (Ultralytics)",
+  "checkpoint_path": "/Users/niyatijha/Desktop/crop-disease-detection/artifacts/checkpoints/pest_detection_yolov8/best_yolov8n_seg.pt",
+  "parameters_count": 3391014,
+  "checkpoint_size_mb": 6.72,
+  "test_dataset": "TutaAbsolutaResearch v4 (92 holdout images, 151 polygon instances)",
+  "test_sample_count": 92,
+  "overall_box_metrics": {
+    "mean_precision": 0.7034,
+    "mean_recall": 0.7037,
+    "map50": 0.7199,
+    "map50_95": 0.3959
+  },
+  "overall_mask_metrics": {
+    "mean_precision": 0.7232,
+    "mean_recall": 0.7037,
+    "map50": 0.7037,
+    "map50_95": 0.3499
+  },
+  "per_class_metrics": {
+    "Healthy": {
+      "box_precision": 0.7034,
+      "box_recall": 0.7037,
+      "box_map50": 0.7853,
+      "box_map50_95": 0.462,
+      "mask_precision": 0.7232,
+      "mask_recall": 0.7037,
+      "mask_map50": 0.7853,
+      "mask_map50_95": 0.443
+    },
+    "Tuta absoluta": {
+      "box_precision": 0.7976,
+      "box_recall": 0.5645,
+      "box_map50": 0.6545,
+      "box_map50_95": 0.3297,
+      "mask_precision": 0.7958,
+      "mask_recall": 0.5565,
+      "mask_map50": 0.6221,
+      "mask_map50_95": 0.2568
+    }
+  },
+  "cpu_latency_benchmark": {
+    "device": "CPU",
+    "samples_timed": 92,
+    "mean_latency_ms": 72.85,
+    "median_latency_ms": 72.85,
+    "p95_latency_ms": 74.61,
+    "throughput_fps": 13.7
+  },
+  "cross_evaluation_kasaisa_baseline": {
+    "note": "Could not cross-evaluate on Kasaisa: Segment dataset requires equal numbers of boxes and segments, but got len(segments) = 0, len(boxes) = 29. Please supply a segment dataset, not a detect dataset."
+  },
+  "tinyyolo_comparison": {
+    "baseline": {
+      "architecture": "Custom TinyYOLODetector (8x8 Grid, 1 anchor/cell)",
+      "test_dataset": "TomatoEbola Kasaisa Farm (12 test images, 29 boxes)",
+      "box_map50": 0.3044,
+      "box_map50_95": 0.0879,
+      "tuta_damage_precision": 0.0784,
+      "tuta_damage_recall": 0.2353,
+      "tuta_damage_ap50": 0.0866,
+      "cpu_latency_ms": 10.27,
+      "parameters": 726949,
+      "checkpoint_size_mb": 2.77
+    },
+    "yolov8n_seg": {
+      "tuta_damage_box_map50": 0.6545,
+      "tuta_damage_box_precision": 0.7976,
+      "tuta_damage_box_recall": 0.5645,
+      "tuta_damage_mask_map50": 0.6221
+    },
+    "comparability_disclosure": "Direct comparison notes: TinyYOLO baseline was evaluated on the 12-image Kasaisa farm holdout test split with bounding boxes. YOLOv8n-seg was evaluated on the 92-image TutaAbsolutaResearch v4 holdout test split with instance segmentation polygons. On cross-evaluation against Kasaisa, YOLOv8n-seg achieves N/A mAP@0.5 compared to TinyYOLO's 30.44% mAP@0.5."
+  },
+  "overlays_directory": "/Users/niyatijha/Desktop/crop-disease-detection/reports/pest_detection_audit/test_prediction_overlays_yolov8",
+  "overlays_count": 8
+}

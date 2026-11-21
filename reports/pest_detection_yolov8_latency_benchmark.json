@@ -1,0 +1,32 @@
+{
+  "yolov8n_seg_cpu": {
+    "model": "YOLOv8n-Seg (Production / Recommended)",
+    "device": "CPU",
+    "warmup_iterations": 10,
+    "timed_iterations": 50,
+    "mean_latency_ms": 77.99,
+    "median_latency_ms": 78.31,
+    "std_latency_ms": 4.51,
+    "p95_latency_ms": 81.35,
+    "throughput_fps": 12.82
+  },
+  "tinyyolo_cpu": {
+    "model": "TinyYOLO (Experimental Baseline)",
+    "device": "CPU",
+    "warmup_iterations": 10,
+    "timed_iterations": 50,
+    "mean_latency_ms": 7.91,
+    "median_latency_ms": 7.88,
+    "std_latency_ms": 0.42,
+    "p95_latency_ms": 8.72,
+    "throughput_fps": 126.46
+  },
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python_version": "3.12.3",
+    "torch_version": "2.13.0",
+    "mps_built": true,
+    "mps_available": false
+  }
+}
